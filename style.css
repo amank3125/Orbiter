@@ -1,0 +1,18 @@
+.close {
+    visibility: hidden;
+}
+.loader {
+    height: 15px;
+    width: 15px;
+    border: 2px dashed black;
+    border-radius: 50%;
+    animation: load 2s infinite;
+}
+@keyframes load {
+    0% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
