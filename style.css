@@ -9,7 +9,11 @@ body {
     width: 100vw;
     display: grid;
     place-content: center;
-    background-image: radial-gradient(rgb(51, 51, 145) 0%, rgb(27, 17, 81) 30%,rgb(0, 0, 42) 80%);
+    background-image:radial-gradient(rgb(51, 51, 145) 0%, rgb(27, 17, 81) 30%,rgb(0, 0, 42) 80%);
+    background-blend-mode: overlay;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 .tool {
     color: white;
@@ -70,16 +74,49 @@ body {
     color: white;
     outline: none;
     border: none;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 999;
 }
 .query:hover,.query:focus{
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.5);
     transition: 0.3s ease-in all;
 }
+.logo {
+    height: 10vh;
+}
+.main{
+    overflow: hidden;
+    /* animation: revolve 60s infinite ease-in-out; */
+}
+.moon {
+    background-image: url('img/light-bg.png');
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    /* animation: revolve 60s infinite ease-in-out; */
+}
 @keyframes load {
     0% {
         transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes revolve {
+    0%{
+        transform: rotate(0deg);
+        transform-origin: bottom;
     }
     100%{
         transform: rotate(360deg);

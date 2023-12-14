@@ -35,10 +35,16 @@ fetch("https://openapi.orbiter.finance/explore/v3/yj6toqvwh1177e1sexfy0u1pxx5j8o
   .then(result => {
     _loader.classList.toggle('close');
     if(Object.keys(JSON.parse(result))[2]=='result'){
+      if(JSON.parse(result).result.count==0){
+        _result.innerHTML="No transactions found ⚠️";
+      } else {
         _count.innerHTML=JSON.parse(result).result.count;
+        _result.innerHTML="Successfully fetched transactions ✅";
+      }
+        
     } else if(Object.keys(JSON.parse(result))[2]=='error'){
         _result.innerHTML = Object.values(JSON.parse(result))[2].message+" ❌";
     }
 })
-  .catch(error => console.log(error))
+  .catch(error => _result.innerHTML=error+" ❌");
 }
