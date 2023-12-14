@@ -7,15 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2 class="header">Orbiter Transaction Count Checker</h2>
-    <input class="address" type="text" placeholder="Enter Address"></br></br>
-    <!-- <textarea class="body" type="text" placeholder="Enter body"></textarea></br></br> -->
-    <a>Total Transactions: <span class="count">0</span></a>
-    <div class="loader close"></div>
-    <!-- <input type="submit" placeholder="Search"> -->
-    </br>
-    <button class="query" onclick="_fetch(_body)">Query</button>
-    <span class="result"></span>
+    <div class="main">
+        <div class="tool">
+            <h2 class="header">Orbiter Transaction Count Checker</h2>
+            <div class="address-container">
+                <input class="address" type="text" placeholder="Enter Address">
+                <div class="loader close"></div>
+            </div>
+            <!-- <textarea class="body" type="text" placeholder="Enter body"></textarea></br></br> -->
+            <a>Total Transactions: <span class="count">0</span></a>
+            
+            <!-- <input type="submit" placeholder="Search"> -->
+            <button class="query" onclick="_fetch(_body)">Query</button>
+            <span class="result"></span>
+        </div>   
+    </div>
+    
 <script src="app.js"></script>
 </body>
 </html>
