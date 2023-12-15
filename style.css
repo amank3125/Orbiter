@@ -1,3 +1,29 @@
+:root {
+	--d: 2500ms;
+	--angle: 90deg;
+	--gradX: 100%;
+	--gradY: 50%;
+	--c1: rgba(168, 239, 255, 1);
+	--c2: rgba(168, 239, 255, 0.1);
+}
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 90deg;
+    inherits: true;
+  }
+  
+  @property --gradX {
+    syntax: '<percentage>';
+    initial-value: 50%;
+    inherits: true;
+  }
+  
+  @property --gradY {
+    syntax: '<percentage>';
+    initial-value: 0%;
+    inherits: true;
+  }
+
 body {
     margin: 0;
     padding: 0;
@@ -12,13 +38,56 @@ body {
     animation:fade 5s 1;
     animation-fill-mode: forwards;
 }
+.box {
+        border-radius: 8px;
+        font-size: 3vw;
+        margin: max(1rem, 3vw);
+        border: 0.35rem solid;
+        padding: 3vw;
+        border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+        animation: borderRotate var(--d) linear infinite forwards;
+}
+.box:nth-child(2) {
+	border-image: radial-gradient(ellipse at var(--gradX) var(--gradY), var(--c1), var(--c1) 10%, var(--c2) 40%) 30;
+	animation: borderRadial var(--d) linear infinite forwards;
+}
+
+@keyframes borderRotate {
+	100% {
+		--angle: 420deg;
+	}
+}
+
+@keyframes borderRadial {
+	20% {
+		--gradX: 100%;
+		--gradY: 50%;
+	}
+	40% {
+		--gradX: 100%;
+		--gradY: 100%;
+	}
+	60% {
+		--gradX: 50%;
+		--gradY: 100%;
+	}
+	80% {
+		--gradX: 0%;
+		--gradY: 50%;
+	}
+	100% {
+		--gradX: 50%;
+		--gradY: 0%;
+	}
+}
 /* Classlists Ends */
 .main{
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-columns:2fr;
-    column-gap: 3%;
+    /* grid-template-columns:0.2fr 1.8fr 1fr; */
+    grid-template-columns:1fr 2fr 1fr;
+    
     place-content: center;
     background-image:radial-gradient(rgb(51, 51, 145) 0%, rgb(27, 17, 81) 30%,rgb(0, 0, 42) 80%);
     background-blend-mode: overlay;
@@ -42,15 +111,16 @@ body {
     place-self: center;
     z-index: 999;
     box-shadow: 0px 0px 30px 10px rgba(255, 255, 255, 0.1);
+    grid-area: 1/2;
 }
 
 .loader {
-    /* margin-top: 10px; */
-    position: absolute;
+    margin-top: -10px;
+    /* position: absolute;
+    bottom: 52%;
+    right: 8%; */
     height: 25px;
     width: 25px;
-    bottom: 52%;
-    right: 8%;
     border: 2px dashed white;
     border-radius: 50%;
     animation: load 2s infinite;
@@ -58,7 +128,9 @@ body {
 .address-container {
     width: 100%;
     display: flex;
-    align-items: start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 .address {
     width: 90%;
@@ -225,7 +297,7 @@ body {
     box-shadow: 0px 0px 30px 10px rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     overflow: hidden;
-    width: 20%;
+    width: 200px;
     display: flex;
     align-items: start;
     justify-content: center;
@@ -237,7 +309,7 @@ body {
     place-self: flex-start;
 }
 .nft-container {
-    height: 70%;
+    height: 80%;
     width: 100%;
 }
 .nft-img {
