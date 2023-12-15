@@ -129,5 +129,9 @@ body {
     }
     .address {
         font-size: 1em;
+        height: 20px;
+    }
+    .address::placeholder{
+       font-size: 1.2em;
     }
 }
