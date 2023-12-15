@@ -14,6 +14,7 @@ body {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;
+    overflow: hidden;
 }
 .tool {
     color: white;
@@ -83,22 +84,19 @@ body {
     transition: 0.3s ease-in all;
 }
 .logo {
-    height: 10vh;
-}
-.main{
-    overflow: hidden;
-    /* animation: revolve 60s infinite ease-in-out; */
+    height: 7.5vh;
 }
 .moon {
     background-image: url('img/light-bg.png');
     position: absolute;
-    height: 100%;
+    top: 55%;
+    height: 45%;
     width: 100%;
     opacity: 0.5;
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;
-    margin: 0;
+    margin:0;
     padding: 0;
     overflow: hidden;
     z-index: 0;
@@ -120,5 +118,13 @@ body {
     }
     100%{
         transform: rotate(360deg);
+    }
+}
+@media screen and (max-width:600px) {
+    .tool {
+        transition: 0.1s ease-in-out all;
+        width: 60vw;
+        text-align: center;
+        font-size: 0.75em;
     }
 }
