@@ -127,4 +127,7 @@ body {
         text-align: center;
         font-size: 0.75em;
     }
+    .address {
+        font-size: 1em;
+    }
 }
