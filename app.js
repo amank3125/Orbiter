@@ -10,15 +10,18 @@ let _tool = document.querySelector('.tool');
 let _nftImg = document.querySelector('.nft-img');
 let _nftTitle = document.querySelector('.nft-title');
 let _eligible = document.querySelector('.eligible');
+let _box = document.querySelector('.box');
+
 var myHeaders = new Headers();
 myHeaders.append("Content-Type","application/json");
 var requestOptions;
 function _fetch(){
-    _addressContainer.classList.add('box');
+    // _addressContainer.classList.add('box');
     _loader.classList.remove('close');
     _count.innerHTML = 0;
     _result.innerHTML = "";
-    _nftTitle.innerHTML = "";
+    // _nftTitle.innerHTML = "";
+    _address.style.borderBottom = "1px solid white";
     _main.style.gridTemplateColumns = "1fr 2fr 1fr";
     _tool.style.placeSelf = "center";
     _eligible.classList.add('close');
@@ -52,26 +55,26 @@ fetch("https://openapi.orbiter.finance/explore/v3/yj6toqvwh1177e1sexfy0u1pxx5j8o
       } else {
         _count.innerHTML=rCount;
         _result.innerHTML="Successfully fetched transactions ✅";
-        _main.style.gridTemplateColumns = "0.2fr 1.8fr 1fr";
+        _main.style.gridTemplateColumns = "1fr 2fr 1fr";
         // _tool.style.placeSelf = "end";
         _eligible.style.gridArea = "1/3";
         _tool.style.gridArea = "1/2;"
         _eligible.classList.remove('close');
         _loader.classList.add('close');
         if(rCount<=9){                 // NFT Eligibility check
-          _nftTitle.innerHTML = "TRAINEE PILOT";
+          // _nftTitle.innerHTML = "TRAINEE PILOT";
           _nftImg.src = "/img/trainee.png";
         } else if (rCount>=10&&rCount<=49){
-          _nftTitle.innerHTML = "PILOT";
+          // _nftTitle.innerHTML = "PILOT";
           _nftImg.src = "/img/pilot.png";
         } else if (rCount>=50&&rCount<=99){
-          _nftTitle.innerHTML = "ELITE PILOT";
+          // _nftTitle.innerHTML = "ELITE PILOT";
           _nftImg.src = "/img/elite.png";
         } else if (rCount>=100&&rCount<=499){
-          _nftTitle.innerHTML = "EXPERT PILOT";
+          // _nftTitle.innerHTML = "EXPERT PILOT";
           _nftImg.src = "/img/expert.png";
         } else if (rCount>=500){
-          _nftTitle.innerHTML = "ACE PILOT";
+          // _nftTitle.innerHTML = "ACE PILOT";
           _nftImg.src = "/img/ace.png";
         }
       }
