@@ -17,11 +17,15 @@ let _errorMsg = document.querySelector('.error_msg');
 let _successToast = document.querySelector('.success');
 let _errorToast = document.querySelector('.error');
 let _warningToast = document.querySelector('.warning');
+let _successClose = document.querySelector('.success_close');
+let _warningClose = document.querySelector('.warning_close');
+let _errorClose = document.querySelector('.error_close');
 
 var myHeaders = new Headers();
 myHeaders.append("Content-Type","application/json");
 var requestOptions;
 function _fetch(){
+    addClick()
     // _addressContainer.classList.add('box');
     _loader.classList.remove('close');
     _count.innerHTML = 0;
@@ -61,7 +65,7 @@ fetch("https://openapi.orbiter.finance/explore/v3/yj6toqvwh1177e1sexfy0u1pxx5j8o
       } else {
         _count.innerHTML=rCount;
         toast('success');
-        _result.innerHTML="Successfully fetched transactions ✅";
+        // _result.innerHTML="Successfully fetched transactions ✅";
         _main.style.gridTemplateColumns = "1fr 2fr 1fr";
         // _tool.style.placeSelf = "end";
         _eligible.style.gridArea = "1/3";
@@ -106,10 +110,21 @@ function toast(e){
       // _successToast.classList.add('fade');
     } else if (e=="warning"){
       _warningToast.classList.remove('close');
-      _warningToast.classList.add('fade');
     } else if(e=="error"){
       _errorToast.classList.remove('close');
       // _errorToast.classList.add('fade');
     }
   },0)
+}
+
+function addClick(){
+  _successClose.addEventListener('click',()=>{
+    _successToast.classList.add('fade');
+  })
+  _warningClose.addEventListener('click',()=>{
+    _warningToast.classList.add('fade');
+  })
+  _errorClose.addEventListener('click',()=>{
+    _errorToast.classList.add('fade');
+  })
 }

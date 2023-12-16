@@ -40,7 +40,7 @@ a {
     visibility: hidden;
 }
 .fade {
-    animation:fade 5s 1;
+    animation:fade 2s 1;
     animation-fill-mode: forwards;
 }
 .box {
@@ -230,6 +230,7 @@ a {
   }
   
   .error_close {
+    cursor: pointer;
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -280,10 +281,12 @@ a {
   }
   
   .warning_close {
+    cursor: pointer;
     width: 20px;
     height: 20px;
-    margin-left: auto;
     cursor: pointer;
+    margin-left: auto;
+    filter: drop-shadow(2px 1px 2px rgb(0 0 0 / 0.4));
   }
   
   .warning_close path {
@@ -329,14 +332,15 @@ a {
   color: #2B641E;
 }
 
-.success__close {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  margin-left: auto;
+.success_close {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: auto;
 }
 
-.success__close path {
+.success_close path {
   fill: #2B641E;
 }
 
