@@ -11,6 +11,12 @@ let _nftImg = document.querySelector('.nft-img');
 let _nftTitle = document.querySelector('.nft-title');
 let _eligible = document.querySelector('.eligible');
 let _box = document.querySelector('.box');
+let _errorMsg = document.querySelector('.error_msg');
+
+// Toast boxes
+let _successToast = document.querySelector('.success');
+let _errorToast = document.querySelector('.error');
+let _warningToast = document.querySelector('.warning');
 
 var myHeaders = new Headers();
 myHeaders.append("Content-Type","application/json");
@@ -49,11 +55,12 @@ fetch("https://openapi.orbiter.finance/explore/v3/yj6toqvwh1177e1sexfy0u1pxx5j8o
     if(Object.keys(JSON.parse(result))[2]=='result'){
       let rCount = JSON.parse(result).result.count;
       if(rCount==0){
-        _result.innerHTML="No transactions found ⚠️";
+        toast('warning');
         _eligible.classList.add('close');
         _loader.classList.add('close');
       } else {
         _count.innerHTML=rCount;
+        toast('success');
         _result.innerHTML="Successfully fetched transactions ✅";
         _main.style.gridTemplateColumns = "1fr 2fr 1fr";
         // _tool.style.placeSelf = "end";
@@ -80,13 +87,29 @@ fetch("https://openapi.orbiter.finance/explore/v3/yj6toqvwh1177e1sexfy0u1pxx5j8o
       }
         
     } else if(Object.keys(JSON.parse(result))[2]=='error'){
-        _result.innerHTML = Object.values(JSON.parse(result))[2].message+" ❌";
-        _eligible.classList.add('close');
-        _loader.classList.add('close');
+      toast('error');
+      _errorMsg.innerHTML = Object.values(JSON.parse(result))[2].message;
+      _eligible.classList.add('close');
+      _loader.classList.add('close');
     }
 })
-  .catch(error => {_result.innerHTML=error+" ❌";
+  .catch(error => {_errorMsg.innerHTML=error;
   _eligible.classList.add('close');
   _loader.classList.add('close');
 });
+}
+
+function toast(e){
+  setTimeout(()=>{
+    if(e=="success"){
+      _successToast.classList.remove('close');
+      // _successToast.classList.add('fade');
+    } else if (e=="warning"){
+      _warningToast.classList.remove('close');
+      _warningToast.classList.add('fade');
+    } else if(e=="error"){
+      _errorToast.classList.remove('close');
+      // _errorToast.classList.add('fade');
+    }
+  },0)
 }
