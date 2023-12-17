@@ -35,6 +35,10 @@ function _fetch(){
     _main.style.gridTemplateColumns = "1fr 2fr 1fr";
     _tool.style.placeSelf = "center";
     _eligible.classList.add('close');
+    _successToast.classList.add('close');
+    _warningToast.classList.add('close');
+    _errorToast.classList.add('close');
+
     var raw = `{
         "id": 1,
         "jsonrpc": "2.0",

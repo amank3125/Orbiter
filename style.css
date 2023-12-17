@@ -39,6 +39,9 @@ a {
 .close {
     visibility: hidden;
 }
+.hide {
+  display: none !important;
+}
 .fade {
     animation:fade 2s 1;
     animation-fill-mode: forwards;
@@ -92,7 +95,6 @@ a {
     display: grid;
     /* grid-template-columns:0.2fr 1.8fr 1fr; */
     grid-template-columns:1fr 2fr 1fr;
-    
     place-content: center;
     background-image:radial-gradient(rgb(51, 51, 145) 0%, rgb(27, 17, 81) 30%,rgb(0, 0, 42) 80%);
     background-blend-mode: overlay;
@@ -437,4 +439,28 @@ a {
     .address::placeholder{
        font-size: 1.2em;
     }
+    .main {
+      display: flex;
+      flex-direction: column;
+      /* grid-template-rows:2fr 1fr; */
+      align-items: center;
+      justify-content: center;
+    }
+    .success, .warning, .error {
+      bottom: 4%;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
 }
+/* @media screen and (max-width:600px) {
+  .main {
+    grid-template-columns:1fr;
+    grid-template-rows:2fr 1fr;
+    place-items: center;
+    justify-content: center;
+  }
+  .tool {
+    place-self: center;
+    justify-self: start;
+  }
+} */
