@@ -9,9 +9,10 @@ let _main = document.querySelector('.main');
 let _tool = document.querySelector('.tool');
 let _nftImg = document.querySelector('.nft-img');
 let _nftTitle = document.querySelector('.nft-title');
-let _eligible = document.querySelector('.eligible');
+let _eligible = document.querySelector('.eligible-container');
 let _box = document.querySelector('.box');
 let _errorMsg = document.querySelector('.error_msg');
+let _txnSpan = document.querySelector('.txn-span');
 
 // Toast boxes
 let _successToast = document.querySelector('.success');
@@ -35,10 +36,7 @@ function _fetch(){
     _main.style.gridTemplateColumns = "1fr 2fr 1fr";
     _tool.style.placeSelf = "center";
     _eligible.classList.add('close');
-    _successToast.classList.add('close');
-    _warningToast.classList.add('close');
-    _errorToast.classList.add('close');
-
+    _txnSpan.classList.add('close')
     var raw = `{
         "id": 1,
         "jsonrpc": "2.0",
@@ -76,6 +74,7 @@ fetch("https://openapi.orbiter.finance/explore/v3/yj6toqvwh1177e1sexfy0u1pxx5j8o
         _tool.style.gridArea = "1/2;"
         _eligible.classList.remove('close');
         _loader.classList.add('close');
+        _txnSpan.classList.remove('close')
         if(rCount<=9){                 // NFT Eligibility check
           // _nftTitle.innerHTML = "TRAINEE PILOT";
           _nftImg.src = "/img/trainee.png";
@@ -108,27 +107,30 @@ fetch("https://openapi.orbiter.finance/explore/v3/yj6toqvwh1177e1sexfy0u1pxx5j8o
 }
 
 function toast(e){
+  if(e=="success"){
+    _successToast.classList.add('show');
+    // _successToast.classList.add('fade');
+  } else if (e=="warning"){
+    _warningToast.classList.add('show');
+  } else if(e=="error"){
+    _errorToast.classList.add('show');
+    // _errorToast.classList.add('fade');
+  }
   setTimeout(()=>{
-    if(e=="success"){
-      _successToast.classList.remove('close');
-      // _successToast.classList.add('fade');
-    } else if (e=="warning"){
-      _warningToast.classList.remove('close');
-    } else if(e=="error"){
-      _errorToast.classList.remove('close');
-      // _errorToast.classList.add('fade');
-    }
-  },0)
+    _errorToast.classList.remove('show');
+    _warningToast.classList.remove('show');
+    _successToast.classList.remove('show');
+  },6000)
 }
 
 function addClick(){
   _successClose.addEventListener('click',()=>{
-    _successToast.classList.add('fade');
+    _successToast.classList.remove('show');
   })
   _warningClose.addEventListener('click',()=>{
-    _warningToast.classList.add('fade');
+    _warningToast.classList.remove('show');
   })
   _errorClose.addEventListener('click',()=>{
-    _errorToast.classList.add('fade');
+    _errorToast.classList.remove('show');
   })
-}
+};

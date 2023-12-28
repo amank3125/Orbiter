@@ -29,6 +29,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Trebuchet MS';
+    user-select: none;
 }
 a {
     text-decoration: none;
@@ -42,9 +43,12 @@ a {
 .hide {
   display: none !important;
 }
-.fade {
-    animation:fade 2s 1;
-    animation-fill-mode: forwards;
+.toast {
+  visibility: hidden;
+}
+.toast.show {
+  visibility: visible;
+  animation: fadeinLeft 0.5s, fadeoutLeft 0.5s 5.5s;
 }
 .box {
         margin: max(1rem, 2vw);
@@ -65,7 +69,14 @@ a {
 		--angle: 420deg;
 	}
 }
-
+@keyframes fadeinLeft {
+  from {right: 0%; opacity: 0;}
+  to {right: 2%; opacity: 1;}
+}
+@keyframes fadeoutLeft {
+  from {right: 2%; opacity: 1;}
+  to {right: 0%; opacity: 0;}
+}
 @keyframes borderRadial {
 	20% {
 		--gradX: 100%;
@@ -103,8 +114,10 @@ a {
     background-size: contain;
     overflow: hidden;
     justify-items: center;
+    text-align: center;
 }
 .tool {
+    width: clamp(90%,450,650px);
     color: white;
     border: 1px solid white;
     padding-inline: 5vh;
@@ -247,7 +260,7 @@ a {
 
 /* Caution alert starts */
 
-.warning {
+.warning { 
     position: absolute;
     bottom: 3%;
     right: 2%;
@@ -396,8 +409,8 @@ a {
     background-color: rgba(255, 255, 255, 0.2);
     z-index: 999;
 }
-.claim-nft:hover{
-    cursor: pointer;
+.claim-nft:hover, .claim-nft a:hover{
+  cursor: not-allowed;
     background-color: rgba(255, 255, 255, 0.5);
     transition: 0.3s ease-in all;
 }
@@ -427,6 +440,7 @@ a {
 }
 @media screen and (max-width:600px) {
     .tool {
+      margin-top: 5%;
         transition: 0.1s ease-in-out all;
         width: 60vw;
         text-align: center;
@@ -450,6 +464,27 @@ a {
       bottom: 4%;
       left: 50%;
       transform: translate(-50%, 0);
+    }
+    .eligible-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 10%;
+    }
+    .eligible {
+      height: 90%;
+    }
+    .toast.show {
+      visibility: visible;
+      animation: fadeinbottom 0.5s, fadeoutbottom 0.5s 5.5s;
+    }
+    @keyframes fadeinbottom {
+      from {bottom: 0%; opacity: 0;}
+      to {bottom: 4%; opacity: 1;}
+    }
+    @keyframes fadeoutbottom {
+      from {bottom: 4%; opacity: 1;}
+      to {bottom: 0%; opacity: 0;}
     }
 }
 /* @media screen and (max-width:600px) {
