@@ -1,3 +1,3 @@
-💻 Access Tool - [Open](orbitercc.netlify.app) </br>
+💻 Access Tool - [Here](https://orbitercc.netlify.app) </br>
 
-🐞 Report bugs - [Here](twitter.com/0xAmank)
+🐞 Report bugs - [Here](https://twitter.com/0xAmank)
