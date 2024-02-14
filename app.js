@@ -17,6 +17,7 @@ let _txnSpan = document.querySelector('.txn-span');
 let _info_expand = document.querySelector('.info_expand');
 const chainbaseAPI = '2VQQpKlDTJyrk82KN5zxEfOW3sT';
 var resolved = '';
+const donateAddress = '0x8D50dfCc645967C5A27AFEab73ab5edEAc44434E';
 // Toast boxes
 let _successToast = document.querySelector('.success');
 let _errorToast = document.querySelector('.error');
@@ -143,19 +144,42 @@ function infoExpand(){
   _info_expand.classList.toggle('hide');
 }
 function copyToClip(){
-  alert('0x98d6f0938ab1fDb858d4a77e26aab91a9d308EE2');
+  navigator.clipboard.writeText(donateAddress);
+  toast('success');
+  _successMsg.innerHTML = `Address Copied to Clipboard ✔`;
 }
 
-function resolveENS(ens){
-network_id = '1'; // See https://docs.chainbase.com/reference/supported-chains to get the id of different chains
 
-fetch(`https://api.chainbase.online/v1/ens/records?chain_id=1&domain=${ens}`, {
+function resolveENS(ens){  //ENS Resolver function
+  if(ens==""){
+    toast('error');
+    _errorMsg.innerHTML = "ENS Can't be empty!";
+  }else if(!ens.includes('.eth')){
+    toast('error');
+    _errorMsg.innerHTML = `Invalid ENS : ${ens}`;
+  } else {
+    network_id = '1'; // See https://docs.chainbase.com/reference/supported-chains to get the id of different chains
+    fetch(`https://api.chainbase.online/v1/ens/records?chain_id=1&domain=${ens}`, {
     method: 'GET',
     headers: {
         'x-api-key': chainbaseAPI, // Replace the field with your API key.
         'accept': 'application/json'
     }
 }).then(response => response.json())
-    .then(data => {resolved=data.data.address;toast('success');_successMsg.innerHTML = `Successfuly resolved ENS ${resolved}`})
-    .catch(error => {toast('error');_errorMsg.innerHTML = `Unable to resolve ENS ${ens}`});
-};
+    .then(data => {
+      if(data.data.address==""){
+        toast('error');
+        _errorMsg.innerHTML = `Invalid ENS : ${ens}`;
+      }else {
+      resolved=data.data.address;
+      toast('success');
+      _successMsg.innerHTML = `Successfuly resolved ENS ${resolved}`;
+  }})
+    .catch(error => {
+      toast('error');
+      _errorMsg.innerHTML = `Unable to resolve ENS ${ens} : ${error}`;
+    });
+}};
+
+
+
