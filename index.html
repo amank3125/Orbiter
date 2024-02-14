@@ -6,9 +6,23 @@
     <title>Orbiter Transaction Count Checker</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="/img/favicon.ico">
+    <script src="https://kit.fontawesome.com/6f5fc009a5.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="main">
+      <div class="info_btn" onclick="infoExpand()">
+        <div class="info_inner">
+          <i class="fa-solid fa-info"></i>
+        </div>
+      </div>
+      <div class="info_expand hide">
+        <ul class="info_items">
+          <li class="social_github"><div><a href="https://github.com/amank3125" target="_blank"><i class="fa-brands fa-github"></i></a></div></li>
+          <li class="social_twitter"><div><a href="https://twitter.com/0xAmank" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></div></li>
+          <li class="donate"><div><a href="" onclick="copyToClip()"><i class="fa-solid fa-circle-dollar-to-slot"></i></a></div></li>
+          <li class="report_bug"><div><a href="https://twitter.com/0xAmank" target="_blank"><i class="fa-solid fa-bug"></i></a></div></li>
+        </ul>
+      </div>
         <div class="tool">
             <img class="logo" draggable="false" src="/img/favicon.ico">
             <h2 class="header">Orbiter Transaction Count Checker</h2>
@@ -18,11 +32,9 @@
             </div>
             <!-- <textarea class="body" type="text" placeholder="Enter body"></textarea></br></br> -->
             <a class="txn-span close">Total Transactions: <span class="count">0</span></a>
-            
             <!-- <input type="submit" placeholder="Search"> -->
             <button class="query" onclick="_fetch(_body)">Query</button>
             <span class="result"></span>
-            
         </div>
         <div class="eligible-container close">
         <div class="eligible">

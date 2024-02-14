@@ -12,8 +12,11 @@ let _nftTitle = document.querySelector('.nft-title');
 let _eligible = document.querySelector('.eligible-container');
 let _box = document.querySelector('.box');
 let _errorMsg = document.querySelector('.error_msg');
+let _successMsg = document.querySelector('.success__title');
 let _txnSpan = document.querySelector('.txn-span');
-
+let _info_expand = document.querySelector('.info_expand');
+const chainbaseAPI = '2VQQpKlDTJyrk82KN5zxEfOW3sT';
+var resolved = '';
 // Toast boxes
 let _successToast = document.querySelector('.success');
 let _errorToast = document.querySelector('.error');
@@ -133,4 +136,26 @@ function addClick(){
   _errorClose.addEventListener('click',()=>{
     _errorToast.classList.remove('show');
   })
+};
+
+function infoExpand(){
+  _info_expand.style = "transision:0.3s ease-in all";
+  _info_expand.classList.toggle('hide');
+}
+function copyToClip(){
+  alert('0x98d6f0938ab1fDb858d4a77e26aab91a9d308EE2');
+}
+
+function resolveENS(ens){
+network_id = '1'; // See https://docs.chainbase.com/reference/supported-chains to get the id of different chains
+
+fetch(`https://api.chainbase.online/v1/ens/records?chain_id=1&domain=${ens}`, {
+    method: 'GET',
+    headers: {
+        'x-api-key': chainbaseAPI, // Replace the field with your API key.
+        'accept': 'application/json'
+    }
+}).then(response => response.json())
+    .then(data => {resolved=data.data.address;toast('success');_successMsg.innerHTML = `Successfuly resolved ENS ${resolved}`})
+    .catch(error => {toast('error');_errorMsg.innerHTML = `Unable to resolve ENS ${ens}`});
 };
