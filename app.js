@@ -144,6 +144,7 @@ function infoExpand(){
   _info_expand.classList.toggle('hide');
 }
 function copyToClip(){
+  event.preventDefault();
   navigator.clipboard.writeText(donateAddress);
   toast('success');
   _successMsg.innerHTML = `Address Copied to Clipboard ✔`;

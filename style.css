@@ -173,11 +173,11 @@ a {
   border-radius: 10px;
   border: 2px solid rgb(200,200,200);
 }
-ul {
+ul{
   display: flex;
   justify-content: center;
-  align-items: center;
-  height:50%;
+  align-items: end;
+  height:30%;
   width: 100%;
   list-style-type: none;
   margin: 0;
@@ -185,16 +185,15 @@ ul {
   overflow: hidden;
 }
 li {
-  height: 50%;
   float: left;
 }
 li div {
   margin-inline: 8px;
-  background-image:linear-gradient(110deg,rgb(51, 51, 145) 0%, rgb(27, 17, 81) 30%,rgb(0, 0, 42) 80%);
+  /* background-image:linear-gradient(110deg,rgb(51, 51, 145) 0%, rgb(27, 17, 81) 30%,rgb(0, 0, 42) 80%); */
   color: white;
   font-size: 1.6em;
   border-radius: 50%;
-  height: 1.6em;
+  /* height: 1.6em; */
   width: 1.6em;
   display: flex;
   justify-content: center;
@@ -202,13 +201,9 @@ li div {
   cursor: pointer;
   transition: 0.3s ease-in-out all;
 }
-li div:hover{
-  transform: scale(1.15);
-  box-shadow: 0px 0px 15px 5px rgba(91, 91, 255, 0.3);
-}
 li i {
   color: white;
-  font-size: 24px !important;
+  font-size: 22px !important;
 }
 .tool {
     width: clamp(90%,450,650px);
@@ -258,7 +253,7 @@ li i {
     color: white;
     background-color: transparent;
     margin-bottom: 5%;
-}
+  }
 .address::placeholder{
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -287,6 +282,10 @@ li i {
 .moon {
     background-image: url('img/light-bg.png');
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
     top: 55%;
     height: 45%;
     width: 100%;
@@ -298,7 +297,7 @@ li i {
     padding: 0;
     overflow: hidden;
     z-index: 0;
-    pointer-events: none;
+    /* pointer-events: none; */
     /* animation: revolve 60s infinite ease-in-out; */
 }
 /* Error alert starts */
@@ -594,4 +593,84 @@ li i {
   }
 } */
 
-/** Tooltip **/
+/** Tooltip starts **/
+
+/* This is an example, feel free to delete this code */
+.tooltip-container {
+  --background: #333333;
+  --color: #e8e8e8;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  font-size: 18px;
+  font-weight: 600;
+  height: 60px;
+  color: var(--color);
+  padding: 0.5em 0.6em;
+  border-radius: 8px;
+  text-transform: uppercase;
+  display: grid;
+  place-items: center;
+}
+.tooltip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.3em 1em;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  background: var(--background);
+  z-index: -1;
+  border-radius: 8px;
+  scale: 0;
+  transform-origin: 0 0;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 16px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  bottom: -0.2em;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  background: var(--background);
+}
+
+.tooltip-container:hover .tooltip {
+  top: -15%;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  scale: 1;
+  animation: shake 0.5s ease-in-out both;
+}
+@keyframes shake {
+  0% {
+    rotate: 0;
+  }
+
+  25% {
+    rotate: 7deg;
+  }
+
+  50% {
+    rotate: -7deg;
+  }
+
+  75% {
+    rotate: 1deg;
+  }
+
+  100% {
+    rotate: 0;
+  }
+}
+
+/* Tooltip ends */

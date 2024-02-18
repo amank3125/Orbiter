@@ -10,19 +10,6 @@
 </head>
 <body>
     <div class="main">
-      <div class="info_btn" onclick="infoExpand()">
-        <div class="info_inner">
-          <i class="fa-solid fa-info"></i>
-        </div>
-      </div>
-      <div class="info_expand hide">
-        <ul class="info_items">
-          <li class="social_github"><div><a href="https://github.com/amank3125" target="_blank"><i class="fa-brands fa-github"></i></a></div></li>
-          <li class="social_twitter"><div><a href="https://twitter.com/0xAmank" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></div></li>
-          <li class="donate" onclick="copyToClip()"><div><i class="fa-solid fa-circle-dollar-to-slot"></i></div></li>
-          <li class="report_bug"><div><a href="https://twitter.com/0xAmank" target="_blank"><i class="fa-solid fa-bug"></i></a></div></li>
-        </ul>
-      </div>
         <div class="tool">
             <img class="logo" draggable="false" src="/img/favicon.ico">
             <h2 class="header">Orbiter Transaction Count Checker</h2>
@@ -47,7 +34,78 @@
                <a aria-disabled="true" target="_blank">Claim ended</a></button>
         </div>
       </div>
-        <div class="moon"></div> 
+        <div class="moon">
+          <!-- <div class="info_expand"> -->
+            <ul class="info_items">
+              <!-- Uncomment below code to bring back no tooltip footer icons -->
+              <!-- <li class="social_github">
+                <div class="tooltitp-container1">
+                  <span class="tooltip1"></span>
+                  <a href="https://github.com/amank3125" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+              </li>
+
+              <li class="social_twitter">
+                <div class="tooltip-container2">
+                  <span class="tooltip2"></span>
+                  <a href="https://twitter.com/0xAmank" target="_blank">
+                    <i class="fa-brands fa-x-twitter"></i>
+                  </a>
+                </div>
+              </li>
+
+              <li class="report_bug">
+                <div class="tooltip-container4">
+                  <span class="tooltip4"></span>
+                  <a href="https://twitter.com/0xAmank" target="_blank">
+                    <i class="fa-solid fa-bug"></i>
+                  </a>
+                </div>
+              </li> -->
+              <!-- Uncomment above  code to bring back no tooltip footer icons -->
+
+              <li class="social_github">
+                <div class="tooltip-container">
+                  <span class="tooltip">Github</span>
+                  <a href="https://github.com/amank3125" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+              </li>
+
+              <li class="social_twitter">
+                <div class="tooltip-container">
+                  <span class="tooltip">Twitter</span>
+                  <a href="https://twitter.com/0xAmank" target="_blank">
+                    <i class="fa-brands fa-x-twitter"></i>
+                  </a>
+                </div>
+              </li>
+
+              <li class="report_bug">
+                <div class="tooltip-container">
+                  <span class="tooltip">Report bug</span>
+                  <a href="https://twitter.com/0xAmank" target="_blank">
+                    <i class="fa-solid fa-bug"></i>
+                  </a>
+                </div>
+              </li>
+
+
+              <li class="donate">
+                <!-- Test tooltip -->
+                <div class="tooltip-container">
+                  <span class="tooltip">Donate</span><a href="" onclick="copyToClip()">
+                  <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                  </a>
+                </div>
+              </li>
+
+            </ul>
+          <!-- </div> -->
+        </div> 
         <div class="error toast">
             <div class="error__icon">
               <svg
